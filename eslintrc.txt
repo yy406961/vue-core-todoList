@@ -1,0 +1,11 @@
+// .eslintrc总是报错，先不用，配置放txt文件内
+{
+  "extends": "standard",
+  "plugins": [
+    "html"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+    "no-new": "off"
+  }
+}
