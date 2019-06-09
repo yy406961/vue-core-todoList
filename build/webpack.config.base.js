@@ -5,7 +5,7 @@ const creatvueLoaderOption = require('./vue-loader.config')
 const config = {
     target: 'web',
     entry: path.join(__dirname, '../src/index.js'),
-    mode: 'production',
+    mode: process.env.NODE_ENV || 'production', // 只接收两个值，production development
     output: {
         filename: 'bundle.[hash:8].js',
         path: path.join(__dirname, '../dist')

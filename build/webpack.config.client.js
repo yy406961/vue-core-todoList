@@ -25,6 +25,10 @@ const devServer = {
     overlay: {
         errors: true
     },
+    
+    // historyApiFallback: {
+    //     index: '/ndex.html'
+    // },
     open: true, // 运行npm run dev 自动打开浏览器
     hot: true  // 改组件代码，页面只重新渲染组件，不加载整个页面
 }
@@ -40,13 +44,13 @@ if (isDev) {
                 {
                     test: /\.styl/, // vue 文件里使用stylus写css时，文件名后面别加$
                     use: ['style-loader', 'css-loader', 'stylus-loader']
-                } 
+                }
             ]
         },
         devServer,
         plugins: defaultPluins.concat([
-            new webpack.HotModuleReplacementPlugin(), // hot: true 需要的插件
-            new webpack.NoEmitOnErrorsPlugin()
+            new webpack.HotModuleReplacementPlugin() // hot: true 需要的插件
+            // new webpack.NoEmitOnErrorsPlugin()
         ])
     })
 } else {
@@ -67,11 +71,11 @@ if (isDev) {
                         fallback: 'style-loader',
                         use: ['css-loader', 'stylus-loader']
                     })
-                } 
+                }
             ]
         },
         plugins: defaultPluins.concat([
-            new ExtractPlugin('styles.[hash:8].css'),
+            new ExtractPlugin('styles.[hash:8].css')
         ]),
         optimization: {
             splitChunks: {
@@ -82,7 +86,8 @@ if (isDev) {
                         minChunks: 2
                     }
                 }
-            }
+            },
+            runtimeChunk: true
         }
     })
 }
