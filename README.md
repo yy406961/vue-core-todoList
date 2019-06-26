@@ -2,11 +2,38 @@
 vue-core-todoList
 VUE核心 vuex vue-router 演示示例 todoList
 
-# 使用方法
-进入项目目录，运行
+## Project setup
+
+```
 npm install
+```
 
-然后执行
+### Compiles and hot-reloads for development
+
+```
 npm run dev
+```
 
-开始开发项目
+### Compiles and minifies for production
+
+```
+npm run build
+```
+
+### Run your tests
+
+```
+npm run test
+```
+
+### Lints and fixes files
+
+```
+npm run lint
+```
+
+### fixes files
+
+```
+npm run lint-fix
+```
