@@ -2,8 +2,15 @@
     <div id="app">
         <div id="cover"></div>
         <Header></Header>
-        <router-view />
-        <!-- <Todo></Todo> -->
+        <p>{{ counter }} {{ fullName }}</p>
+        <p>{{ textA }}</p>
+        <router-link to="/app">app</router-link> |
+        <router-link to="/login">login</router-link>
+        <router-view></router-view>
+        <!-- <transition name="fade">
+            <router-view />
+        </transition> -->
+        <!-- <router-view name="a"/> -->
         <Footer></Footer>
     </div>
 </template>
@@ -12,12 +19,53 @@
 import Header from './views/layout/header.vue'
 import Footer from './views/layout/footer.jsx'
 import Todo from './views/todo/todo.vue'
+import { setInterval } from 'timers'
+import { 
+    mapState, 
+    mapGetters,
+    mapMutations,
+    mapActions
+} from 'vuex'
 
 export default {
     data() {
         return {
             text: 'abcaaaa'
         }
+    },
+    mounted () {
+        console.log(this.$store)
+        let i = 1
+        // dispatch专用来触发actions的
+        // this.$store.dispatch('updateCountAsync', {
+        //     num: 5,
+        //     time: 2000
+        // })
+        this.updateCountAsync({
+            num: 5,
+            time: 2000
+        })
+        this['a/updateText']('123')
+        // setInterval(() => {
+        //     this.$store.commit('updateCount', i++)
+        // }, 1000)
+    },
+    computed: {
+        ...mapState({
+            counter: (state) => state.count,
+            textA: (state) => state.a.text
+        }),
+        ...mapGetters({ fullName: 'fullName'})
+        // count () {
+        //     return this.$store.state.count
+        // },
+        // fullName () {
+        //     return this.$store.getters.fullName
+        // }
+    },
+    methods: {
+        ...mapMutations(['updateCount', 'a/updateText']),
+        ...mapActions(['updateCountAsync'])
     },
     components: {
         Header,

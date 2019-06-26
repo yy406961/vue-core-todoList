@@ -17,14 +17,33 @@
             :todos="todos"
             @toggel="toggelFilter"
             @clearAllCompleted="clearAllCompleted"></Tabs>
+        <!-- <router-view name="a"></router-view> -->
     </section>
 </template>
 
 <script>
 import Item from './item.vue'
 import Tabs from './tabs.vue'
-let id = 0
+// let id = 0
 export default {
+    // metaInfo: {
+    //     title: 'The Todo App'
+    // },
+    // beforeRouteEnter (to, from, next) {
+    //     console.log('todo before enter', this)
+    //     next()
+    //     // next(vm => {
+    //     // console.log('after enter vm.id is ', vm.id)
+    //     // })
+    // },
+    // beforeRouteUpdate (to, from, next) {
+    //     console.log('todo update enter', this)
+    //     next()
+    // },
+    // beforeRouteLeave (to, from, next) {
+    //     console.log('todo leave enter', this)
+    //     next()
+    // },
     data() {
         return {
             todos: [],
