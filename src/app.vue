@@ -1,11 +1,14 @@
 <template>
     <div id="app">
         <div id="cover"></div>
-        <Header></Header>
-        <p>{{ counter }} {{ fullName }}</p>
-        <p>{{ textA }}</p>
+        <!-- <Header></Header> -->
+        <!-- <p>{{ counter }} {{ fullName }}</p>
+        <p>{{ textA }}</p> -->
         <router-link to="/app">app</router-link> |
-        <router-link to="/login">login</router-link>
+        <router-link to="/login">login</router-link> |
+        <span @click="clicka">点击a</span> |
+        <span @click="click">点击a/b</span>
+
         <router-view></router-view>
         <!-- <transition name="fade">
             <router-view />
@@ -34,7 +37,7 @@ export default {
         }
     },
     mounted () {
-        console.log(this.$store)
+        // console.log(this.$router.options.routes)
         let i = 1
         // dispatch专用来触发actions的
         // this.$store.dispatch('updateCountAsync', {
@@ -65,7 +68,35 @@ export default {
     },
     methods: {
         ...mapMutations(['updateCount', 'a/updateText']),
-        ...mapActions(['updateCountAsync'])
+        ...mapActions(['updateCountAsync']),
+        clicka() {
+            let path = '/aaa/a'
+            this.$router.addRoutes([
+                {
+                    path: path,
+                    name: 'aaa',
+                    component: () => import('./views/login/login.vue')
+                }
+            ])
+            this.$router.push({
+                path:  path
+            })
+            console.log(this.$router.options.routes)
+        },
+        click() {
+            let path = '/aaa/a/b'
+            this.$router.addRoutes([
+                {
+                    path: path,
+                    name: 'aaa',
+                    component: () => import('./views/login/login.vue')
+                }
+            ])
+            this.$router.push({
+                path:  path
+            })
+            console.log(this.$router.options.routes)
+        }
     },
     components: {
         Header,

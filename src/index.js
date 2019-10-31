@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import App from './app.vue'
-
+Vue.use(Vuex)
+Vue.use(VueRouter)
 import './assets/styles/global.styl'
 import './assets/styles/test.css'
 import './assets/styles/test-stylus.styl'
@@ -12,9 +13,6 @@ import createStore from './stores/store'
 
 const root = document.createElement('div')
 document.body.appendChild(root)
-
-Vue.use(VueRouter)
-Vue.use(Vuex)
 
 const router = createRouter()
 const store = createStore()
